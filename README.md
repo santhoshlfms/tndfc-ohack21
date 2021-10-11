@@ -5,9 +5,13 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 First, run the development server:
 
 ```bash
-npm run dev
+npm run dev or make dev
 # or
 yarn dev
+
+to run the firebase emulator 
+
+run : make fb 
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
