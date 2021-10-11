@@ -1,0 +1,34 @@
+{
+    "database": {
+      "rules": ".firebase_configs/database.rules.json"
+    },
+    "firestore": {
+      "rules": ".firebase_configs/firestore.rules",
+      "indexes": ".firebase_configs/firestore.indexes.json"
+    },
+    "storage": {
+      "rules": ".firebase_configs/storage.rules"
+    },
+    "emulators": {
+      "auth": {
+        "port": 33007
+      },
+      "database": {
+        "port": 33008
+      },
+      "firestore": {
+        "port": 33009
+      },
+      "pubsub": {
+        "port": 33010
+      },
+      "storage": {
+        "port": 33011
+      },
+      "ui": {
+        "enabled": true,
+        "port": 33012
+      }
+    }
+  }
+  

@@ -1,0 +1,14 @@
+{
+    "indexes": [
+      {
+        "collectionGroup": "applications",
+        "queryScope": "COLLECTION",
+        "fields": [
+          { "fieldPath": "mobileNo", "order": "ASCENDING" },
+          { "fieldPath": "updatedAt", "order": "DESCENDING" }
+        ]
+      }
+    ],
+    "fieldOverrides": []
+  }
+  
