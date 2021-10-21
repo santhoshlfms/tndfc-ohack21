@@ -3,6 +3,8 @@ module.exports = {
   reactStrictMode: true,
   env: {
     MONGO_URI: "mongodb://localhost:27017/tndfctrust",
+    SIGNING_TOKEN: "158AC701-C10C-4603-B693-F255A112F6DC",
+    USERS : ["9003808408"]
   },
   i18n: {
     locales: ["en-US"],
