@@ -1,4 +1,5 @@
-export default interface User {
+
+export default interface IUser extends TypeOf<typeof schema> {
     name: string;
     fatherName: string;
     motherName: string;
@@ -29,10 +30,10 @@ export default interface User {
     dob?: string;
     disability?: boolean;
     natureOfDisability?: Array<string>;
-    documents?: Array[Documents];
+    documents?: Array[IDocuments];
 }
 
-interface Documents {
+interface IDocuments {
     type: string;
     path: string
 }
