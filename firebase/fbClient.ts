@@ -1,12 +1,47 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import getConfig from "next/config";
+import { initializeApp, getApps } from "firebase/app";
+import { browserLocalPersistence, getAuth, connectAuthEmulator } from "firebase/auth";
+import { getDatabase, connectDatabaseEmulator } from "firebase/database";
+import { getFirestore, connectFirestoreEmulator } from "firebase/firestore";
+import { getStorage, connectStorageEmulator } from "firebase/storage";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
+if (typeof window !== "undefined" && !getApps().length) {
+  const { publicRuntimeConfig } = getConfig();
+
+  initializeApp(publicRuntimeConfig.firebaseApp);
+
+  if (process.env.NODE_ENV === "development") {
+    connectAuthEmulator(
+      getAuth(),
+      `http://localhost:${publicRuntimeConfig.firebaseEmulators.auth.port}`
+    );
+
+    connectDatabaseEmulator(
+      getDatabase(),
+      "localhost",
+      publicRuntimeConfig.firebaseEmulators.database.port
+    );
+
+    connectFirestoreEmulator(
+      getFirestore(),
+      "localhost",
+      publicRuntimeConfig.firebaseEmulators.firestore.port
+    );
+
+    connectStorageEmulator(
+      getStorage(),
+      "localhost",
+      publicRuntimeConfig.firebaseEmulators.storage.port
+    );
+  }
+
+  getAuth().setPersistence(browserLocalPersistence);
+}
+
+
+/**
+ * 
+ * const firebaseConfig = {
   apiKey: "AIzaSyCAQo5vjggG29DeWVB3M8PpxiIpevtKyls",
   authDomain: "tndfc-app.firebaseapp.com",
   projectId: "tndfc-app",
@@ -16,6 +51,4 @@ const firebaseConfig = {
   measurementId: "G-EEJVZK173R"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+ */

@@ -4,7 +4,8 @@ module.exports = {
   env: {
     MONGO_URI: "mongodb://localhost:27017/tndfctrust",
     SIGNING_TOKEN: "158AC701-C10C-4603-B693-F255A112F6DC",
-    USERS : ["9003808408"]
+    USERS : [{ email: "santhoshlfms@gmail.com", password: "12345678", displayName: "Santhosh Nelson", emailVerified: true, disabled: false},
+    { email: "muru@gmail.com", password: "12345678", displayName: "Muru S", emailVerified: true, disabled: false}]
   },
   i18n: {
     locales: ["en-US"],

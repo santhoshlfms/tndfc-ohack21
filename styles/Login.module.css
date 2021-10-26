@@ -1,0 +1,38 @@
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .card {
+    width: 480px;
+  }
+  
+  .form {
+    margin: 2rem 0;
+  }
+  
+  .formInputError {
+    margin: 6px 0 0 2px;
+    color: red;
+  }
+  
+  .btnSubmit {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+  
+  .footer {
+    text-align: center;
+    margin-top: 2rem;
+
+  }
+  
+  @include media-breakpoint-down(sm) {
+    .card {
+      width: 100%;
+    }
+  }
+  
