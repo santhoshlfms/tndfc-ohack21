@@ -1,8 +1,9 @@
-import { array, number, object, string, TypeOf } from 'yup';
-import IUser from '../types/user'
+import { array, number, object, string, TypeOf, date, mixed } from 'yup';
+var moment = require('moment');
 
 export const userSchema = object({
     mobileNo: string().required().min(10),
+    status: mixed().oneOf(['NEW', 'APPROVED', 'DECLINED', 'MOREINFO']),
     userInfo: object({
         name: string().required().min(3),
         fatherName: string().required().min(3),
@@ -30,10 +31,13 @@ export const userSchema = object({
         sex: string().optional(),
         education: string().optional(),
         bloodGroup: string().optional(),
-        dob: string().optional(),
+        dob: date().optional().default(function () {
+            return moment().format("DD/MM/YYYY");
+          }).optional(),
         disability: string().optional(),
         natureOfDisability: string().optional(),
         documents: string().optional()
+        
     })})
 
 export type User = TypeOf<typeof userSchema>;

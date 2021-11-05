@@ -5,7 +5,7 @@ import Image from 'next/image'
 import styles from '../styles/Login.module.css'
 import Link from "next/link";
 import authError from "./_auth-error";
-import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, signOut, signInWithPhoneNumber } from "firebase/auth";
 import { useRouter } from "next/router";
 import { useRef, useState } from "react";
 import { Alert, Button, Card, Container, Dropdown, Form } from "react-bootstrap";
@@ -19,6 +19,12 @@ interface FormData {
     email: string;
     password: string;
   }
+
+  declare global {
+    interface Window {
+        FB:any;
+    }
+}
   
   const schema = yup.object().shape({
     email: yup.string().required().email(),
@@ -30,6 +36,8 @@ const Login: NextPage = () => {
     const [loggingIn, setLoggingIn] = useState(false);
     const [loginError, setLoginError] = useState("");
     const form: RefObject<HTMLFormElement> = useRef(null);
+    
+   
 
     const {
       register,
@@ -104,6 +112,7 @@ const Login: NextPage = () => {
 
         <Button
           variant="success"
+          id="signinbutton010"
           disabled={loggingIn}
           className={styles.btnSubmit}
           onClick={() => {

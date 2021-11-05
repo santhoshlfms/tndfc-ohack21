@@ -29,7 +29,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
                 } else {
                     res.status(200).json({ status: 'NO_DATA_FOUND', data: {} })
                 }
-            }).catch((error: any) => { console.log("Error fetching document") });
+            }).catch((error: any) => { console.log("ERROR_FETCHING_DOCUMENT") });
         } else {
             res.status(200).json({ status: 'NO_DATA_FOUND', data: {} })
         }

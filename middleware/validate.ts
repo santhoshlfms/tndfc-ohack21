@@ -1,5 +1,5 @@
 import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
-import { number, object } from 'yup';
+import { string, object } from 'yup';
 import { ObjectShape, OptionalObjectSchema } from 'yup/lib/object';
 
 export function validate(
@@ -11,12 +11,8 @@ export function validate(
     if (['POST', 'PUT'].includes(API_METHOD)) {
       try {
         const newSchema =
-          req.method === 'POST'
-            ? schema
-            : schema.concat(object({ id: number().required().positive() }));
-
-        req.body = await newSchema
-          .validate(req.body, { abortEarly: false, stripUnknown: true });
+          req.method === 'POST' ? schema.concat(object({ status: string().required().default('NEW')})) : schema.concat(object({ mobileNo: string().required().min(10).max(10)}));
+          req.body = await newSchema.validate(req.body, { abortEarly: false, stripUnknown: true });
       } catch (error) {
         return res.status(400).json(error);
       }
