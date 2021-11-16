@@ -46,7 +46,7 @@ export default function ApplicationTable(): JSX.Element {
 
   return (
     <div className="container">
-        <Datatable tableHeaders={header} tableBody={body} rowsPerPage={15} labels={customLabels} />
+        <Datatable tableHeaders={header} tableBody={body} rowsPerPage={15} labels={customLabels}  initialSort={{ prop: 'Mobile', isAscending: true }}/>
     </div>
   );
 }
