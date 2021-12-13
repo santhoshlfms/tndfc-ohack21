@@ -1,7 +1,7 @@
 {
     "indexes": [
       {
-        "collectionGroup": "applications",
+        "collectionGroup": "application",
         "queryScope": "COLLECTION",
         "fields": [
           { "fieldPath": "mobileNo", "order": "ASCENDING" },

@@ -15,7 +15,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         let { mobileNo } = req.body
         let TOP_USERS = process.env.USERS || [];
         if (mobileNo != undefined) {
-            const applicationRef = admin.collection('applications');
+            const applicationRef = admin.collection('application');
             await applicationRef.doc(mobileNo).get().then((docRef: any) => {
                 let userDoc = docRef.data();
                 if (userDoc) {

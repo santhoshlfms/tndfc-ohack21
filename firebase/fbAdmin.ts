@@ -19,6 +19,6 @@ if (!admin.apps.length) {
     //credential: FirebaseAdmin.credential.cert(ServiceAccount),
   });
 }
-let fbAdmin = admin.firestore()
+let fbAdmin = admin//.firestore()
 
 export default fbAdmin;
