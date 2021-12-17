@@ -1738,11 +1738,14 @@
   "version" "6.18.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 "babel-plugin-transform-remove-console@^6.9.4":
   "integrity" "sha1-uYA2DAZzhOJLNXpYjYB9PINSd4A="
   "resolved" "https://artifactory.g.devqa.gcp.dev.paypalinc.com/artifactory/api/npm/npm-all/babel-plugin-transform-remove-console/-/babel-plugin-transform-remove-console-6.9.4.tgz"
   "version" "6.9.4"
 
+=======
+>>>>>>> 17f44ed83be6e96cd50deb664305e7260f044a0f
 =======
 >>>>>>> 17f44ed83be6e96cd50deb664305e7260f044a0f
 "balanced-match@^1.0.0":
