@@ -2,8 +2,47 @@
 (() => {
 var exports = {};
 exports.id = 829;
-exports.ids = [829];
+exports.ids = [829,396];
 exports.modules = {
+
+/***/ 834:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "Z": () => (/* binding */ firebase_fbAdmin)
+});
+
+// EXTERNAL MODULE: external "next/config"
+var config_ = __webpack_require__(8951);
+var config_default = /*#__PURE__*/__webpack_require__.n(config_);
+;// CONCATENATED MODULE: ./firebaseconfig.json
+const firebaseconfig_namespaceObject = {};
+;// CONCATENATED MODULE: ./firebase/fbAdmin.ts
+const admin = __webpack_require__(4054);
+
+
+
+
+if (!admin.apps.length) {
+  const {
+    publicRuntimeConfig
+  } = config_default()();
+
+  if (false) {}
+
+  admin.initializeApp({
+    projectId: "tdfct-7491d",
+    credential: admin.credential.cert(firebaseconfig_namespaceObject)
+  });
+} else {}
+
+let fbAdmin = admin; //.firestore()
+
+/* harmony default export */ const firebase_fbAdmin = (fbAdmin);
+
+/***/ }),
 
 /***/ 6330:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -57,7 +96,7 @@ module.exports = require("next/config");
 var __webpack_require__ = require("../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [396], () => (__webpack_exec__(6330)));
+var __webpack_exports__ = (__webpack_exec__(6330));
 module.exports = __webpack_exports__;
 
 })();
