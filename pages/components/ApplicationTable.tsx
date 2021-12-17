@@ -1,52 +1,113 @@
-import Datatable from 'react-bs-datatable';
+import React, { useEffect, useState } from "react";
+import DataTable, { TableColumn, ExpanderComponentProps } from "react-data-table-component";
+import CsvDownload from "react-json-to-csv";
+import { useRouter } from "next/router";
 
-export default function ApplicationTable(): JSX.Element {
+import "react-data-table-component-extensions/dist/index.css";
 
-    const header = [
-        { title: 'Mobile No', prop: 'Mobile' },
-        { title: 'Name', prop: 'realname' },
-        { title: 'Father Name', prop: 'fathername' },
-        { title: 'Aadhaar', prop: 'aadhaar' },
-        { title: 'Status', prop: 'status' },
-      ];
+interface Props {
+  data: any;
+  pending?: boolean;
+}
 
-      const customLabels = {
-        first: '<<',
-        last: '>>',
-        prev: '<',
-        next: '>',
-        show: 'Display',
-        entries: 'rows',
-        noResults: 'There is no data to be displayed'
-      };
+//Reference: https://react-data-table-component.netlify.app/?path=/docs/api-typescript--page
+interface DataRow {
+  mobileNo: string;
+  name: string;
+  fatherName: string;
+  disability: string;
+  education: string;
+  status: string;
+}
 
-    const body = Array.from(new Array(57), () => {
-        const rd = Number((Math.random() * 10).toFixed(1));
-      
-        if (rd > 0.5) {
-          return {
-            Mobile: `900380840${rd}`,
-            realname: `Billy ${rd}`,
-            fathername: 'Mars', 
-            aadhaar: '13214356464547',
-            status: 'Pending',
-            sortable: true
-          };
-        }
-      
-        return {
-          username: 'john-nhoj',
-          realname: `John ${rd}`,
-          location: 'Saturn',
-          aadhaar: '534242154456547',
-          status: 'Pending',
-          sortable: true
-        };
-      });
+export default function ApplicationTable(props: Props): JSX.Element {
+  const [filteredApplications, setFilteredApplications] = useState([]);
+  const { data, pending } = props;
+  const router = useRouter();
+
+  const columns: TableColumn<DataRow>[] = [
+    {
+      name: "Mobile no",
+      selector: (row) => row.mobileNo,
+      sortable: true,
+    },
+    {
+      name: "Name",
+      selector: (row) => row.name,
+      sortable: true,
+    },
+    {
+      name: "Disability",
+      selector: (row) => row.disability,
+      sortable: true,
+    },
+    {
+      name: "Education",
+      selector: (row) => row.education,
+    },
+    {
+      name: "Type",
+      selector: (row) => findApplicationTag(row).toString(),
+    },
+    {
+      name: "Status",
+      selector: (row) => findApplicationStatus(row).toString(),
+    },
+    {
+      name: "",
+      cell: (row: any) => <button onClick={() => viewApplication(row)}>View </button>,
+      ignoreRowClick: true,
+      button: true,
+    },
+  ];
+
+  const findApplicationTag = (row: any) => {
+    var temp = [];
+    if ("jobApplication" in row) {
+      temp.push("JOB");
+    }
+    return temp;
+  };
+  const findApplicationStatus = (row: any) => {
+    var temp = [];
+    if ("jobApplication" in row) {
+      temp.push("JOB - " + row["jobApplication"]["status"]);
+    }
+    return temp;
+  };
+
+  const ExpandedComponent: React.FC<ExpanderComponentProps<DataRow>> = ({ data }) => {
+    return <pre>{JSON.stringify(data, null, 2)}</pre>;
+  };
+
+  const viewApplication = (rowData: any) => {
+    router.replace((router.query?.next ?? `/dashboard/application/${rowData.mobileNo}`) as string);
+  };
+
+  const tableData = {
+    columns,
+    data,
+  };
 
   return (
     <div className="container">
-        <Datatable tableHeaders={header} tableBody={body} rowsPerPage={15} labels={customLabels}  initialSort={{ prop: 'Mobile', isAscending: true }}/>
+      <hr />
+
+      <CsvDownload data={data} className="btn btn-xs btn-warning">
+        {" "}
+        Export Csv{" "}
+      </CsvDownload>
+      <DataTable
+        columns={columns}
+        data={data}
+        pagination
+        defaultSortAsc={false}
+        progressPending={pending}
+        expandableRows
+        expandableRowsComponent={ExpandedComponent}
+        highlightOnHover
+        noHeader
+      />
     </div>
   );
 }

@@ -15,7 +15,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         let { mobileNo } = req.body
         let TOP_USERS = process.env.USERS || [];
         if (mobileNo != undefined) {
-            const applicationRef = admin.collection('applications');
+            const applicationRef = admin.collection('application');
             await applicationRef.doc(mobileNo).get().then((docRef: any) => {
                 let userDoc = docRef.data();
                 if (userDoc) {
@@ -23,7 +23,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
                     // we need to create JWT here and for future calls we need to use the same token
                     const claims = {userId: mobileNo}
-                    console.log(mobileNo, process.env.SIGNING_TOKEN)
+                    //console.log(mobileNo, process.env.SIGNING_TOKEN)
                     const jwt = sign(claims, process.env.SIGNING_TOKEN!, {expiresIn: '1h'})
                     res.status(200).json({ status: 'success', data: userDoc, accessToken: jwt })
                 } else {

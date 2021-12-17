@@ -13,7 +13,7 @@ export default authenticate(async function handler(req: NextApiRequest, res: Nex
 
     if (req.method === 'GET') {
         let { userId } = req.query
-        const entries = await admin.collection('applications').get();
+        const entries = await admin.collection('application').get();
         const entriesData = entries.docs.map((entry: { id: any; data: () => any }) => ({
             id: entry.id,
             ...entry.data()

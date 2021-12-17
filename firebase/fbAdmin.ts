@@ -1,6 +1,6 @@
 const admin = require("firebase-admin");
 import getConfig from "next/config";
-//import ServiceAccount from "../service-account.json";
+import ServiceAccount from "../firebaseconfig.json";
 
 
 if (!admin.apps.length) {
@@ -14,11 +14,12 @@ if (!admin.apps.length) {
   }
 
   admin.initializeApp({
-    projectId: "tndfc-app",
-    credential: admin.credential.applicationDefault(),
-    //credential: FirebaseAdmin.credential.cert(ServiceAccount),
+    projectId: "tdfct-7491d",
+    credential: admin.credential.cert(ServiceAccount),
   });
+}else {
+  console.log("Admin else")
 }
-let fbAdmin = admin.firestore()
+let fbAdmin = admin//.firestore()
 
 export default fbAdmin;

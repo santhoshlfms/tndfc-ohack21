@@ -6,7 +6,7 @@ import {validate} from "../../../middleware/validate"
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     let { mobileNo } = req.body
-        const doc = await admin.collection('applications').doc(mobileNo).set(req.body, {}).then(() => {
+        const doc = await admin.collection('application').doc(mobileNo).set(req.body, {}).then(() => {
             res.status(200).json({ ...req.body, method: req.method })
         });
     };

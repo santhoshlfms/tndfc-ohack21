@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   reactStrictMode: true,
+  distDir: 'build',
   env: {
     MONGO_URI: "mongodb://localhost:27017/tndfctrust",
     SIGNING_TOKEN: "158AC701-C10C-4603-B693-F255A112F6DC",
@@ -14,13 +15,13 @@ module.exports = {
 
   publicRuntimeConfig: {
     firebaseApp: {
-      apiKey: "AIzaSyCAQo5vjggG29DeWVB3M8PpxiIpevtKyls",
-      authDomain: "tndfc-app.firebaseapp.com",
-      databaseURL: `https://ndfc-9e250.firebaseio.com`,
-      projectId: "tndfc-app",
-      storageBucket: "tndfc-app.appspot.com",
-      MessagingSenderId: "461564452227",
-      appId: "1:461564452227:web:92adb403e007de51de6ab6",
+      apiKey: "AIzaSyA8gem19RNVjjfKIK1t6U5x1mf7N8KLJNM",
+      authDomain: "tdfct-7491d.firebaseapp.com",
+      databaseURL: "https://tdfct-7491d-default-rtdb.firebaseio.com",
+      projectId: "tdfct-7491d",
+      storageBucket: "tdfct-7491d.appspot.com",
+      messagingSenderId: "913117926204",
+      appId: "1:913117926204:web:24a021bb1f029d56e0c439"
     },
     firebaseEmulators: require("./firebase.json").emulators,
   }

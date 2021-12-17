@@ -14,7 +14,7 @@ export default authenticate(async function handler(req: NextApiRequest, res: Nex
     if (req.method === 'GET') {
         let { userId } = req.query
         if (userId != undefined) {
-            const applicationRef = admin.collection('applications');
+            const applicationRef = admin.collection('application');
             await applicationRef.doc(userId).get().then((docRef: any) => {
                 let userDoc = docRef.data();
                 if (userDoc) {
