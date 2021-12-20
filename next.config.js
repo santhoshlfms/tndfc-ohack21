@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   reactStrictMode: true,
-  distDir: 'build',
   env: {
     MONGO_URI: "mongodb://localhost:27017/tndfctrust",
     SIGNING_TOKEN: "158AC701-C10C-4603-B693-F255A112F6DC",
