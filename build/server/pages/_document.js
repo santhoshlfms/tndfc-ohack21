@@ -870,6 +870,7 @@ class Head extends _react.Component {
         }
 
         if (badProp) {
+          console.warn(`Found conflicting amp tag "${child.type}" with conflicting prop ${badProp} in ${__NEXT_DATA__.page}. https://nextjs.org/docs/messages/conflicting-amp-tag`);
           return null;
         }
       } else {

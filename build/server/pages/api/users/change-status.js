@@ -36,7 +36,9 @@ if (!admin.apps.length) {
     projectId: "tdfct-7491d",
     credential: admin.credential.cert(firebaseconfig_namespaceObject)
   });
-} else {}
+} else {
+  console.log("Admin else");
+}
 
 let fbAdmin = admin; //.firestore()
 
@@ -66,7 +68,9 @@ async function handler(req, res) {
       disabled: disable
     }).then(userRecord => {
       let users = userRecord; //console.log('Successfully updated user', userRecord.toJSON());
-    }).catch(error => {});
+    }).catch(error => {
+      console.log('Error listing users:', error);
+    });
     res.status(200).json({
       status: "SUCCESS",
       data: users

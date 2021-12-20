@@ -52,7 +52,9 @@ function AddUser(props) {
       if (data.status === "SUCCESS") {
         userList();
       }
-    }, error => {});
+    }, error => {
+      console.log(error);
+    });
   };
 
   return /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx("div", {

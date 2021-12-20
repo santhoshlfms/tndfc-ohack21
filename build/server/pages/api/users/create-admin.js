@@ -36,7 +36,9 @@ if (!admin.apps.length) {
     projectId: "tdfct-7491d",
     credential: admin.credential.cert(firebaseconfig_namespaceObject)
   });
-} else {}
+} else {
+  console.log("Admin else");
+}
 
 let fbAdmin = admin; //.firestore()
 
@@ -79,7 +81,9 @@ async function handler(req, res) {
           data: users
         });
       });
-    }).catch(error => {});
+    }).catch(error => {
+      console.log('Error creating new user:', error);
+    });
   } else {
     res.status(405).json({
       status: 'METHOD_NOT_SUPPORTED'

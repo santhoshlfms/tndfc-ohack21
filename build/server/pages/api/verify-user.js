@@ -51,7 +51,9 @@ async function handler(req, res) {
             data: {}
           });
         }
-      }).catch(error => {});
+      }).catch(error => {
+        console.log("ERROR_FETCHING_DOCUMENT");
+      });
     } else {
       res.status(200).json({
         status: 'NO_DATA_FOUND',

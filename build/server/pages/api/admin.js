@@ -15,7 +15,10 @@ exports.modules = {
 /* harmony import */ var jsonwebtoken__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jsonwebtoken__WEBPACK_IMPORTED_MODULE_0__);
 
 const authenticate = fn => async (req, res) => {
+  console.log(req.headers.authorization);
   (0,jsonwebtoken__WEBPACK_IMPORTED_MODULE_0__.verify)(req.headers.authorization, "158AC701-C10C-4603-B693-F255A112F6DC", async function (err, decoded) {
+    console.log(err);
+
     if (!err && decoded) {
       return await fn(req, res);
     }

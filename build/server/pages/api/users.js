@@ -36,7 +36,9 @@ if (!admin.apps.length) {
     projectId: "tdfct-7491d",
     credential: admin.credential.cert(firebaseconfig_namespaceObject)
   });
-} else {}
+} else {
+  console.log("Admin else");
+}
 
 let fbAdmin = admin; //.firestore()
 
@@ -61,7 +63,9 @@ async function handler(req, res) {
       listUsersResult.users.forEach(userRecord => {
         if (userRecord.emailVerified && userRecord.customClaims.ROLE === 'ADMIN_TNDFC') users.push(userRecord);
       });
-    }).catch(error => {});
+    }).catch(error => {
+      console.log('Error listing users :', error);
+    });
     res.status(200).json({
       status: "SUCCESS",
       data: users

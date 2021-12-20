@@ -1221,7 +1221,10 @@ routerEvents.forEach(event => {
       if (_singletonRouter[eventField]) {
         try {
           _singletonRouter[eventField](...args);
-        } catch (err) {}
+        } catch (err) {
+          console.error(`Error when running the Router event: ${eventField}`);
+          console.error(`${err.message}\n${err.stack}`);
+        }
       }
     });
   });
@@ -1621,6 +1624,7 @@ function resolveHref(router, href, resolveAs) {
   const urlParts = urlAsStringNoProto.split('?');
 
   if ((urlParts[0] || '').match(/(\/\/|\\)/)) {
+    console.error(`Invalid href passed to next/router: ${urlAsString}, repeated forward-slashes (//) or backslashes \\ are not valid in the href`);
     const normalizedUrl = (0, _utils).normalizeRepeatedSlashes(urlAsStringNoProto);
     urlAsString = (urlProtoMatch ? urlProtoMatch[0] : '') + normalizedUrl;
   } // Return because it cannot be routed by the Next.js router
@@ -2306,6 +2310,7 @@ class Router {
             query
           });
         } catch (gipErr) {
+          console.error('Error in error page `getInitialProps`: ', gipErr);
           routeInfo.props = {};
         }
       }

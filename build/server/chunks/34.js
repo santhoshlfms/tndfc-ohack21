@@ -31,7 +31,9 @@ function Navbar() {
     currentUser
   } = (0,_providers_AuthProvider__WEBPACK_IMPORTED_MODULE_1__/* .useAuth */ .a)();
 
-  const handle = () => {};
+  const handle = () => {
+    console.log("handle");
+  };
 
   const handleLogout = async () => {
     await (0,firebase_auth__WEBPACK_IMPORTED_MODULE_0__.signOut)((0,firebase_auth__WEBPACK_IMPORTED_MODULE_0__.getAuth)());

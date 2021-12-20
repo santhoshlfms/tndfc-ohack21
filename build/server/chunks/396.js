@@ -34,7 +34,9 @@ if (!admin.apps.length) {
     projectId: "tdfct-7491d",
     credential: admin.credential.cert(firebaseconfig_namespaceObject)
   });
-} else {}
+} else {
+  console.log("Admin else");
+}
 
 let fbAdmin = admin; //.firestore()
 
