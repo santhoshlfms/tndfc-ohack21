@@ -72,11 +72,13 @@ export default function Reports(props: Props): JSX.Element {
         </button>
             */}
       </div>
-      <div className="row">
+      {/*<div className="row">
         {showCalendar ? (
           <DateRangePicker ranges={[selectionRange]} onChange={handleSelect} />
         ) : null}
-      </div>
+         </div>
+        */}
+     
     </div>
   );
 }
