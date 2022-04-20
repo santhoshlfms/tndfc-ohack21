@@ -14,9 +14,14 @@ if (!admin.apps.length) {
   }
 
   admin.initializeApp({
-    projectId: "tdfct-7491d",
-    credential: admin.credential.cert(ServiceAccount),
-  });
+      credential: FirebaseAdmin.credential.cert({
+        privateKey: process.env.FIREBASE_SERVICE_ACCOUNT_PRIVATE_KEY
+          ? process.env.FIREBASE_SERVICE_ACCOUNT_PRIVATE_KEY.replace(/\\n/gm, "\n")
+          : undefined,
+        projectId: process.env.PROJECT_ID,
+        clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+      }),
+    });
 }else {
   console.log("Admin else")
 }
