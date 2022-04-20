@@ -14,7 +14,7 @@ if (!admin.apps.length) {
   }
 
   admin.initializeApp({
-      credential: FirebaseAdmin.credential.cert({
+      credential: admin.credential.cert({
         privateKey: process.env.FIREBASE_SERVICE_ACCOUNT_PRIVATE_KEY
           ? process.env.FIREBASE_SERVICE_ACCOUNT_PRIVATE_KEY.replace(/\\n/gm, "\n")
           : undefined,
